@@ -1,0 +1,38 @@
+<!--
+ @author : Parth
+ @purpose : View User Page 
+-->
+<div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+
+        <!-- PAGE HEADER -->
+        <div class="form-group alert alert-success alert-dismissible" ng-show="message" role="alert" ng-click="close()">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><h5>{{message}}</h5></span>
+        </div>
+        <div class="page-header"><h1>SEARCH USER BY EMAIL</h1></div>
+        <!-- FORM -->
+        <!-- pass in the variable if our form is valid or invalid -->
+        <form name="formData" ng-submit="viewUser()"> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+
+            <!-- EMAIL -->
+            <div class="form-group" ng-class="{'has-error':formData.email.$invalid && !formData.email.$pristine}">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" ng-model="email" required>
+            </div>
+            <!-- SUBMIT BUTTON -->
+            <button type="submit"  class="btn btn-primary">VIEW USER</button>
+
+        </form>
+        <div class="jumbotron" ng-show="userdata">
+            <span><h5><b>Name:   </b> {{name}}</h5></span>
+            <span><h5><b>Email:  </b> {{email}}</h5></span>
+            <span><h5><b>Phone:  </b> {{phone}}</h5></span>
+            <span><h5><b>Address:  </b> {{address}}</h5></span>
+            
+        </div>
+        
+
+    </div><!-- col-sm-8 -->
+</div><!-- /container -->
+

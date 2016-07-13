@@ -1,0 +1,53 @@
+<!--
+ @author : Parth
+ @purpose : Update User Page 
+-->
+<div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+
+        <!-- PAGE HEADER -->
+        <div class="form-group alert alert-success alert-dismissible" ng-show="message" role="alert" ng-click="close()">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span><h5>{{message}}</h5></span>
+        </div>
+        <div class="page-header"><h1>UPDATE USER</h1></div>
+        <!-- FORM -->
+        <!-- pass in the variable if our form is valid or invalid -->
+        <form name="formData" ng-submit="updateUser()" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+
+            <!-- NAME -->
+            <div class="form-group" ng-class="{'has-error':formData.name.$invalid && !formData.name.$pristine}">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" ng-model="name" required>
+                <p ng-show="formData.name.$invalid && !formData.name.$pristine" class="help-block">Your name is required.</p>
+
+            </div>
+
+            <!-- EMAIL -->
+            <div class="form-group" ng-class="{'has-error':formData.email.$invalid && !formData.email.$pristine}">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" ng-model="email" required>
+                <span ng-show="formData.email.$dirty && formData.email.$error.required" class="help-block">Email required</span>
+                <span ng-show="formData.email.$dirty && formData.email.$error.email" class="help-block">Not a valid email</span>
+            </div>
+            <div class="form-group" ng-class="{'has-error':formData.phone.$invalid && !formData.phone.$pristine}">
+                <label>Phone</label>
+                <input type="phone" name="phone" class="form-control" ng-model="phone" required>
+                <span ng-show="formData.phone.$dirty && formData.phone.$error.required" class="help-block">Phone required</span>
+            </div>
+            <div class="form-group" ng-class="{'has-error':formData.address.$invalid && !formData.address.$pristine}">
+                <label>Address</label>
+                <!--<input type="address" name="address" class="form-control" ng-model="address" required>-->
+                <textarea name="address" class="form-control" ng-model="address" required></textarea>
+                <span ng-show="formData.address.$dirty && formData.address.$error.required" class="help-block">Address required</span>
+            </div>
+
+
+            <!-- SUBMIT BUTTON -->
+            <button type="submit" ng-disabled="formData.$invalid" class="btn btn-primary">UPDATE USER</button>
+
+        </form>
+
+    </div><!-- col-sm-8 -->
+</div><!-- /container -->
+
